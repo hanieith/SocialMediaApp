@@ -29,3 +29,13 @@ class PostListView(View):
             }
 
             return render(request, template_name='social/post_list.html', context=context)
+
+class PostDetailView(View):
+    def get(self, request, pk, *args, **kwargs):
+        post = Post.objects.get(pk=pk)
+        form = CommentForm
+        context = {
+            'form':form,
+            'post':post,
+        }
+        return render(request, template_name='social/post-detail.html', context=context)
