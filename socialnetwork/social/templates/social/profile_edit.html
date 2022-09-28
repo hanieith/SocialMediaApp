@@ -1,0 +1,30 @@
+{% extends 'landing/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container">
+    <div class="row mt-5">
+    <div class="col-md-5 col-sm-6">
+      <a class="link-dark text-decoration-none" href="{% url 'profile' object.pk %}">Back to Profile</a>
+    </div>
+  </div>
+<div class="row justify-content-center mt-3">
+    <div class="col-md-5 col-sm-12 border-bottom">
+        <h5>Update Your Profile!</h5>
+    </div>
+</div>
+
+<div class="row justify-content-center mt-3">
+    <div class="col-md-5 col-sm-12">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{form | crispy}}
+            <div class="d-grid gap-2 ">
+                <button class="btn tn-outline-dark btn-dark mt-3">Submit!</button>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+
+{% endblock content %}
